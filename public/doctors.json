@@ -1,0 +1,68 @@
+[
+    {
+        "key":"DO01",
+        "category":"Department of Psychiatry",
+        "name":"Dr Anwara Begum",
+        "title":"Prof. Dept of Psychology,Birdem General Hospital. Specialist in psychology.",
+        "description":"r Anwara Begum MBBS, FCPS, MRCPsych (UK). Prof. Dept of Psychology,Birdem General Hospital. Specialist in psychology. Dr Anwara Begum is a renowned psychiatrist in Dhaka and and one of the pioneers of of mental illness treatment in Bangladesh. She is a long-standing member of the Royal College of Psychiatrists in the UK and sees patients",
+        "followers":960,
+        "price":1200,
+        "img":"https://parentscare.xyz/storage/doctor/doctor-1622287050-426.jpeg"
+        
+    },
+    {
+        "key":"DO02",
+        "category":"Surgery",
+        "name":"Dr. Mohammad Shafayet Ullah",
+        "title":"M.B.B.S",
+        "description":"Resident Doctor (General Surgery), Kasr El Ainy Cairo University Hospital, Egypt. M.B.B.S, PGT (Opthalmology), M.Sc in General Surgery (on course) B.M.D.C Reg No: A-70081 Ex-MO, Cresent Orthopedic Specialised Hospital, Dhaka Ex-RMO, Deep Eye Hospital, Bhola, Ex- Assistant Registrar, Department of Surgey, International Medical College & Hospital, Dhaka ",
+        "followers":990,
+        "price":800,
+        "img":"https://parentscare.xyz/storage/doctor/doctor-1605005648-5184.jpg"
+        
+    },
+    {
+        "key":"DO03",
+        "category":"Gynecology",
+        "name":"Dr. Israt Jahan (Ila)",
+        "title":"Assistant Professor( Colorectal surgery) Shaheed Shurawardy Medical College & Hospital,l",
+        "description":"Associate Professor (Gynea) Shaheed Shurawardy Medical College & Hospital, Dhaka MBBS, FCPS (Gynae), MPH FACS (USA), FMAS (India) Special Training in Infertility (Hong Kong & Malaysia) Special Training in Laparoscopic Surgery (India)",
+        "followers":1200,
+        "price":1000,
+        "img":"https://parentscare.xyz/storage/doctor/doctor-1612337470-3443.jpg"
+        
+    },
+    {
+        "key":"DO04",
+        "category":"Oncology",
+        "name":"Dr. A.H.M Tanvir Ahmed",
+        "title":"Specialist in G1 & HPB oncology",
+        "description":"MBBS, FCPS (Surgery) Fellow in GI, HPB & liver Transplant .General laparscopic, Gasrtro-intestinal & Heapato--Billary -Pancreatic -Sugeon ",
+        "followers":700,
+        "price":800,
+        "img":"https://parentscare.xyz/storage/doctor/doctor-1605419840-7337.jpg"
+        
+    },
+    {
+        "key":"DO05",
+        "category":"Medicine",
+        "name":"Prof. Dr. Khawja Nazimuddin",
+        "title":"MDDS, FCPS (Medicine) FRCP (Glasgow), FACP (USA)",
+        "description":"MBBS, FCPS (Surgery) Fellow in GI, HPB & liver Transplant .General laparscopic, Gasrtro-intestinal & Heapato--Billary -Pancreatic -Sugeon ",
+        "followers":950,
+        "price":800,
+        "img":"https://parentscare.xyz/storage/doctor/doctor-1605200105-1712.jpg"
+        
+    },
+    {
+        "key":"DO06",
+        "category":"Neurology",
+        "name":"Dr. Aminur Rahman",
+        "title":"Specialist Neurology",
+        "description":"MD (Neurology), FACP (USA), MBBS(DU) Clinical Informatics &, Brain disorders management, Sleep disorder Management ,Canada Specialty in Neurology , Medicine, Diabetics & Sleep Medicine EX -Associate Professor , Ibrahim Medical College & Birdem Member # American Academy of Neurology # International Headache society . BMDC Reg # A23710 ",
+        "followers":500,
+        "price":800,
+        "img":"https://parentscare.xyz/storage/doctor/doctor-1605426307-7194.jpg"
+        
+    }
+]

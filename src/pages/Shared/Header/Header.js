@@ -55,7 +55,7 @@ const Header = () => {
                                 <span className="mr-2">
                                 <FaClipboardList />
                                 </span>
-                                <Link to='/home'>Packages</Link> 
+                                <Link to='/packages'>Packages</Link> 
                             </li>
                         </ul>
                     </div>

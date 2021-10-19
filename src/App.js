@@ -13,8 +13,10 @@ import Home from './pages/Home/Home';
 import PrivateRoute from './pages/PrivateRouter/PrivateRouter';
 import Doctors from './pages/Doctors/Doctors';
 import Tests from './pages/Tests/Tests';
-import Packages from './pages/Packages/Packages';
+
 import SignUp from './pages/Account/SignUp';
+import DoctorDetails from './pages/Doctors/DoctorDetails';
+import Packages from './pages/Packages/Packages';
 
 function App() {
   return (
@@ -38,12 +40,18 @@ function App() {
             <PrivateRoute path='/doctors'>
               <Doctors />
             </PrivateRoute>
+            <PrivateRoute path='/doctor/:id'>
+              <DoctorDetails />
+            </PrivateRoute>
             <PrivateRoute path='/tests'>
               <Tests />
             </PrivateRoute>
             <PrivateRoute path='/packages'>
               <Packages />
             </PrivateRoute>
+            <Route path='*'>
+
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>
