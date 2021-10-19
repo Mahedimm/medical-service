@@ -11,11 +11,12 @@ const Doctors = () => {
         .then(res=>res.json())
         .then(data=>setDoctors(data))
     },[])
-
+    
     const handleAddCart = (doctor)=>{
         const newCart=[...cart,doctor];
         setCart(newCart);
     }
+    
     return (
         <section class=" mx-auto px-4 sm:px-6 lg:px-4 py-12 bg-green-100 py-14">
             <div class="text-center pb-12">

@@ -43,6 +43,7 @@ const useFirebase = ()=>{
         })
         .finally(()=>setIsLoading(false));
     }
+ 
 
     return{
         user,
@@ -51,7 +52,6 @@ const useFirebase = ()=>{
         signOutGoogle,
         
     }
-
 
 }
 

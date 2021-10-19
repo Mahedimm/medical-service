@@ -1,9 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Button from './AccountComponents/Button';
 import Top from './AccountComponents/Top';
+import { getAuth,createUserWithEmailAndPassword, sendEmailVerification,updateProfile } from '@firebase/auth';
+
 
 const SignUp = () => {
+
+  const auth = getAuth();
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const [name,setName] = useState('');
+  const [error, setError] =useState('');
+ 
+  const handleEmailChange = e=>{
+      setEmail(e.target.value);
+  }
+  const handlePasswordChange = e=>{
+    setPassword(e.target.value);
+  }
+  const handleName = e=>{
+    setName(e.target.value);
+  }
+  const handleSignUp = e =>{
+    e.preventDefault();
+    const regix = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/;
+    
+    if(regix.test(password)===false){
+        setError('password must be a minimum of 8 characters including number, Upper, Lower And one special character !')
+         return;
+    }
+    // if (!/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/.test(password)){
+    //     setError('Must Be 8 Character long At least one a, A,8,,special !');
+    //     return; 
+    //  } 
+    // if (/(?=.*[A-Z])/.test(password)){
+    //     setError('At least one uppercase character !');
+    //     return; 
+    //  } 
+    // if (/(?=.*\d)/.test(password)){
+    //     setError('At least one digit !');
+    //     return; 
+    //  } 
+    // if (/(?=.*[a-zA-Z >>!#$%&? "<<])[a-zA-Z0-9 >>!#$%&?<< ]/.test(password)){
+    //     setError('At least one special character !');
+    //     return; 
+    //  } 
+    createUserWithEmailAndPassword(auth,email,password)
+    .then(result=>{
+        const user = result.user;
+        console.log(user);
+        setError('');
+        verificationEmail();
+    })
+    .catch((error) => {
+        setError(error.message);
+       
+      });
+    
+}
+
+const setUserName = ()=>{
+    updateProfile(auth.currentUser,{
+        displayName: name,
+    })
+    .then(result=>{ })
+
+}
+
+const  verificationEmail = ()=>{
+    sendEmailVerification(auth.currentUser)
+    .then((result) => {
+      // Email verification sent!
+      console.log(result);
+      // ...
+    });
+  
+}
+
     return (
         <div>
              <section>
@@ -21,23 +95,26 @@ const SignUp = () => {
                   </div>
                   <div className="mt-8">
                     <div className="mt-6">
-                      <form action="#" method="POST" className="space-y-6">
+                      <form onSubmit={handleSignUp} action="#" method="POST" className="space-y-6">
                         <div>
                           <label for="name" className="block text-sm font-medium text-white"> Enter your name </label>
                           <div className="mt-1">
-                            <input id="name" name="name" type="text" autocomplete="name" required="" placeholder="Your Name" className="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
+                            <input onBlur={handleName} id="name" name="name" type="text" autocomplete="name" required="" placeholder="Your Name" className="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
                           </div>
                         </div>
                         <div className="space-y-1">
                           <label for="email" className="block text-sm font-medium text-white"> Email address </label>
                           <div className="mt-1">
-                            <input id="email" name="email" type="email" autocomplete="email" required="" placeholder="Your Email" className="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
+                            <input inBlur={handleEmailChange}id="email" name="email" type="email" autocomplete="email" required="" placeholder="Your Email" className="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
                           </div>
                         </div>
                         <div className="space-y-1">
                           <label for="password" className="block text-sm font-medium text-white"> Password </label>
                           <div className="mt-1">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required="" placeholder="Your Password" className="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
+                            <input onBluer={handlePasswordChange}id="password" name="password" type="password" autocomplete="current-password" required="" placeholder="Your Password" className="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
+                            <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+			                      {error}
+                            </span>
                           </div>
                         </div>
                        

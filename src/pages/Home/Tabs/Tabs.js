@@ -3,6 +3,7 @@ import React from 'react';
 import { Tab } from '@headlessui/react'
 import TopDoctors from './TabPages/TopDoctors';
 import TopTest from './TabPages/TopTest';
+import TopPackages from './TabPages/TopPackages';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -37,6 +38,9 @@ const Tabs = () => {
               </Tab.Panel>
               <Tab.Panel>
                 <TopTest />
+              </Tab.Panel>
+              <Tab.Panel>
+                <TopPackages />
               </Tab.Panel>
            
           </Tab.Panels>

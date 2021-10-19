@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link,useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Button from './AccountComponents/Button';
 import ButtonAuth from './AccountComponents/ButtonAuth';
 import Top from './AccountComponents/Top';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const SignIn = () => {
     const {signInUsingGoogle} = useAuth();
@@ -18,6 +19,34 @@ const SignIn = () => {
             history.push(redirect_uri);
         });
     }
+
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [error,setError] = useState('');
+    const handleEmailChange = e=>{
+        setEmail(e.target.value);
+    }
+    const handlePasswordChange = e=>{
+      setPassword(e.target.value);
+    }
+    const handleSignIn = e =>{
+		e.preventDefault();
+		const auth = getAuth();
+		signInWithEmailAndPassword(auth, email, password)
+  		.then((result) => {
+			const user = result.user;
+			console.log(user);
+			setError('');  
+  })
+  .catch((error) => {
+    setError(error.message);
+  });
+
+        
+    }
+
+
+
     return (
         <div>
              <section>
@@ -33,18 +62,21 @@ const SignIn = () => {
                   </div>
                   <div class="mt-8">
                     <div class="mt-6">
-                      <form action="#" method="POST" class="space-y-6">
+                      <form onSubmit={handleSignIn}action="#" method="POST" class="space-y-6">
                         <div>
                           <label for="email" class="block text-sm font-medium text-white"> Email address </label>
                           <div class="mt-1">
-                            <input id="email" name="email" type="email" autocomplete="email" required="" placeholder="Your Email" class="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
+                            <input onBlur={handleEmailChange}id="email" name="email" type="email" autocomplete="email" required="" placeholder="Your Email" class="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
                           </div>
                         </div>
                         <div class="space-y-1">
                           <label for="password" class="block text-sm font-medium text-white"> Password </label>
                           <div class="mt-1">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required="" placeholder="Your Password" class="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
+                            <input onBlur={handlePasswordChange}id="password" name="password" type="password" autocomplete="current-password" required="" placeholder="Your Password" class="block w-full px-5 py-3 text-base text-black placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg  bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"/>
                           </div>
+                          <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+			                  {error}
+                        </span>
                         </div>
                         <div class="flex items-center justify-between">
                           <div class="flex items-center">
@@ -52,7 +84,7 @@ const SignIn = () => {
                             <label for="remember-me" class="block ml-2 text-sm text-white"> Remember me </label>
                           </div>
                           <div class="text-sm">
-                            <a href="#" className="font-medium text-red-500 hover:text-blue-500"> Forgot your password? </a>
+                            <Link to="/resetPassword" className="font-medium text-red-500 hover:text-blue-500"> Forgot your password? </Link>
                           </div>
                         </div>
                         <div>

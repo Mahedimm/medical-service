@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import DoctorCard from './DoctorCard';
+import useDoctors from '../../Hooks/useDoctors';
+
 
 const DoctorDetails = () => {
    const {id} = useParams();
-  
-   const [details,setDetails] = useState([]);
- 
 
-    useEffect(()=>{
-        fetch('./doctors.json')
-        .then(res=>res.json())
-        .then(data=>setDetails(data))
-    },[])
+   useDoctors();
+   //i don't find data why everything ok but data not showing
+
 //    const details = doctors.find(({key})=> key === id);
-//    console.log(details);
+   
    console.log(id);
-   console.log(details);
+   
 
     return (
         <div>
-          
+          {
+              <h1>Doctor Id :{id}</h1>
+          }
             
         </div>
     );

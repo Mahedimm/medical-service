@@ -15,8 +15,10 @@ import Doctors from './pages/Doctors/Doctors';
 import Tests from './pages/Tests/Tests';
 
 import SignUp from './pages/Account/SignUp';
-import DoctorDetails from './pages/Doctors/DoctorDetails';
+
 import Packages from './pages/Packages/Packages';
+import DoctorDetails from './pages/DoctorDetails/DoctorDetails';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -50,7 +52,7 @@ function App() {
               <Packages />
             </PrivateRoute>
             <Route path='*'>
-
+            <NotFound/>
             </Route>
           </Switch>
         </Router>
