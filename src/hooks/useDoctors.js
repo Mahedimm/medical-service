@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+
 const useDoctors = () => {
-    const [details,setDetails]=useState([]);
+    const [doctors,setDoctors]=useState([]);
     useEffect(()=>{
-        fetch('./doctors.json')
+        fetch('https://raw.githubusercontent.com/Mahedimm/Mahedimm/main/doctors.json')
         .then(res=>res.json())
-        .then(data=>setDetails(data));
+        .then(data=>setDoctors(data));
     },[])
-    return console.log(details);
+    return doctors;
 };
 
 export default useDoctors;

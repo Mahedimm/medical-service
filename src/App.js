@@ -19,6 +19,8 @@ import SignUp from './pages/Account/SignUp';
 import Packages from './pages/Packages/Packages';
 import DoctorDetails from './pages/DoctorDetails/DoctorDetails';
 import NotFound from './pages/NotFound/NotFound';
+import DoctorAppointment from './pages/DoctorAppointment/DoctorAppointment';
+import Footer from './pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -42,8 +44,11 @@ function App() {
             <PrivateRoute path='/doctors'>
               <Doctors />
             </PrivateRoute>
-            <PrivateRoute path='/doctor/:id'>
+            <PrivateRoute exact path='/doctor/:id'>
               <DoctorDetails />
+            </PrivateRoute>
+            <PrivateRoute path='/doctor/:id/appointment'>
+              <DoctorAppointment />
             </PrivateRoute>
             <PrivateRoute path='/tests'>
               <Tests />
@@ -55,6 +60,7 @@ function App() {
             <NotFound/>
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </AuthProvider>
      

@@ -19,11 +19,11 @@ const Tabs = () => {
                 
                 className={({ selected }) =>
                   classNames(
-                    'w-screen py-2.5 text-sm leading-5 font-medium m-2 bg-green-400 text-white rounded-lg',
-                    'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-gray-800 ring-green-600 ring-opacity-60',
+                    'w-screen py-2.5 text-sm leading-5 font-medium m-2 bg-white text-green-400 rounded-lg',
+                    'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-white ring-green-600 ring-opacity-60',
                     selected
                       ? 'bg-white shadow'
-                      : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                      : 'text-green-400 hover:bg-white/[0.12] hover:text-green-600'
                   )
                 }
               >

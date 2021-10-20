@@ -68,7 +68,7 @@ const Header = () => {
                             </div>
                             <div className="w-20 h-full flex items-center justify-center border-l  border-r border-gray-700 text-gray-400">
                                 <FaShoppingCart className='text-xl'/>
-                                 <span class="inline-block w-6 h-6 m-1 text-center text-white bg-green-400 rounded-full font-semibold font-heading">3</span>
+                                 <span className="inline-block w-6 h-6 m-1 text-center text-white bg-green-400 rounded-full font-semibold font-heading">3</span>
                             </div>
                            
                             {

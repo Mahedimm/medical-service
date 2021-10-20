@@ -9,9 +9,7 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
-                <Tabs />
-               
-            
+                <Tabs />          
         </div>
     );
 };
