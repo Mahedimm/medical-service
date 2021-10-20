@@ -1,82 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 import Button from './AccountComponents/Button';
 import Top from './AccountComponents/Top';
-import { getAuth,createUserWithEmailAndPassword, sendEmailVerification,updateProfile } from '@firebase/auth';
 
+import signUpImg from '../../images/signup.png';
 
 const SignUp = () => {
 
-  const auth = getAuth();
-  const [email,setEmail] = useState('');
-  const [password,setPassword] = useState('');
-  const [name,setName] = useState('');
-  const [error, setError] =useState('');
- 
-  const handleEmailChange = e=>{
-      setEmail(e.target.value);
-  }
-  const handlePasswordChange = e=>{
-    setPassword(e.target.value);
-  }
-  const handleName = e=>{
-    setName(e.target.value);
-  }
-  const handleSignUp = e =>{
-    e.preventDefault();
-    const regix = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/;
-    
-    if(regix.test(password)===false){
-        setError('password must be a minimum of 8 characters including number, Upper, Lower And one special character !')
-         return;
-    }
-    // if (!/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/.test(password)){
-    //     setError('Must Be 8 Character long At least one a, A,8,,special !');
-    //     return; 
-    //  } 
-    // if (/(?=.*[A-Z])/.test(password)){
-    //     setError('At least one uppercase character !');
-    //     return; 
-    //  } 
-    // if (/(?=.*\d)/.test(password)){
-    //     setError('At least one digit !');
-    //     return; 
-    //  } 
-    // if (/(?=.*[a-zA-Z >>!#$%&? "<<])[a-zA-Z0-9 >>!#$%&?<< ]/.test(password)){
-    //     setError('At least one special character !');
-    //     return; 
-    //  } 
-    createUserWithEmailAndPassword(auth,email,password)
-    .then(result=>{
-        const user = result.user;
-        console.log(user);
-        setError('');
-        verificationEmail();
-    })
-    .catch((error) => {
-        setError(error.message);
-       
-      });
-    
-}
-
-const setUserName = ()=>{
-    updateProfile(auth.currentUser,{
-        displayName: name,
-    })
-    .then(result=>{ })
-
-}
-
-const  verificationEmail = ()=>{
-    sendEmailVerification(auth.currentUser)
-    .then((result) => {
-      // Email verification sent!
-      console.log(result);
-      // ...
-    });
+  const {handleEmailChange,handlePasswordChange,error,handleSignUp,handleName} = useAuth();
   
-}
+  const signUpUsingEmail = ()=>{
+    handleSignUp()
+  }
+
 
     return (
         <div>
@@ -95,7 +32,7 @@ const  verificationEmail = ()=>{
                   </div>
                   <div className="mt-8">
                     <div className="mt-6">
-                      <form onSubmit={handleSignUp} action="#" method="POST" className="space-y-6">
+                      <form onSubmit={signUpUsingEmail} action="#" method="POST" className="space-y-6">
                         <div>
                           <label for="name" className="block text-sm font-medium text-white"> Enter your name </label>
                           <div className="mt-1">
@@ -134,7 +71,7 @@ const  verificationEmail = ()=>{
                 </div>
               </div>
               <div className=" relative flex-1 hidden  overflow-hidden lg:block w-3/5">
-                <img className="absolute inset-0 object-cover w-full h-full" src="https://d33wubrfki0l68.cloudfront.net/871da9bc7972ea11744d2db42565e595ed655913/28dd7/images/placeholders/rectanglewide.svg" alt=""/>
+                <img className="absolute inset-0 object-cover h-half " src={signUpImg} alt=""/>
               </div>
             </div>
           </section>

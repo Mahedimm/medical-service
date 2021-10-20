@@ -5,10 +5,10 @@ import useAuth from '../../Hooks/useAuth';
 import Button from './AccountComponents/Button';
 import ButtonAuth from './AccountComponents/ButtonAuth';
 import Top from './AccountComponents/Top';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import signInimg from '../../images/signIn.png';
 
 const SignIn = () => {
-    const {signInUsingGoogle} = useAuth();
+    const {signInUsingGoogle,handleSignIn,handleEmailChange,handlePasswordChange,error} = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_uri = location.state?.from || "/home"
@@ -20,30 +20,14 @@ const SignIn = () => {
         });
     }
 
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    const [error,setError] = useState('');
-    const handleEmailChange = e=>{
-        setEmail(e.target.value);
+    const SignInUsingEmail = ()=>{
+        handleSignIn()
     }
-    const handlePasswordChange = e=>{
-      setPassword(e.target.value);
-    }
-    const handleSignIn = e =>{
-		e.preventDefault();
-		const auth = getAuth();
-		signInWithEmailAndPassword(auth, email, password)
-  		.then((result) => {
-			const user = result.user;
-			console.log(user);
-			setError('');  
-  })
-  .catch((error) => {
-    setError(error.message);
-  });
+  
 
+    
         
-    }
+    
 
 
 
@@ -62,7 +46,7 @@ const SignIn = () => {
                   </div>
                   <div class="mt-8">
                     <div class="mt-6">
-                      <form onSubmit={handleSignIn}action="#" method="POST" class="space-y-6">
+                      <form onSubmit={SignInUsingEmail}action="#" method="POST" class="space-y-6">
                         <div>
                           <label for="email" class="block text-sm font-medium text-white"> Email address </label>
                           <div class="mt-1">
@@ -117,7 +101,7 @@ const SignIn = () => {
                 </div>
               </div>
               <div class=" relative flex-1 hidden  overflow-hidden lg:block w-3/5">
-                <img class="absolute inset-0 object-cover w-full h-full" src="https://d33wubrfki0l68.cloudfront.net/871da9bc7972ea11744d2db42565e595ed655913/28dd7/images/placeholders/rectanglewide.svg" alt=""/>
+                <img class="absolute inset-0 object-cover  " src={signInimg} alt=""/>
               </div>
             </div>
           </section>

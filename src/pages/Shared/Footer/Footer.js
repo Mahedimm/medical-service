@@ -7,10 +7,10 @@ const Footer = () => {
   <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
     <div className="max-w-3xl mx-auto">
       <nav className="grid grid-cols-2 gap-4 text-center sm:grid-cols-3 lg:grid-cols-6">
-        <a href="" className="hover:opacity-75">Uses</a>
-        <a href="" className="hover:opacity-75">Snippets</a>
-        <a href="" className="hover:opacity-75">Bookmarks</a>
-        <a href="" className="hover:opacity-75">Courses</a>
+        <a href="" className="hover:opacity-75">Help</a>
+        <a href="" className="hover:opacity-75">Office</a>
+        <a href="" className="hover:opacity-75">Services</a>
+        <a href="" className="hover:opacity-75">medCheck</a>
         <a href="" className="hover:opacity-75">Downloads</a>
         <a href="" className="hover:opacity-75">Projects</a>
       </nav>
