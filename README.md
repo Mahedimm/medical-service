@@ -20,7 +20,8 @@
   
 ## Live Link
 
-https://medcheck-23e48.web.app/homeo
+https://medcheck-23e48.web.app/home
+
 
   
 ## Screenshots
